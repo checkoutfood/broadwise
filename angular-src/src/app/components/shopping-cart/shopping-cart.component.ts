@@ -15,7 +15,7 @@ export class ShoppingCartComponent implements OnInit {
   subtotal:number;
   totalitems:number;
   total:number;
-  constructor(private authService: AuthService,
+  constructor(public authService: AuthService,
     private router: Router, private flashMessage: FlashMessagesService) { }
 
   ngOnInit() {

@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
   added: boolean;
 
   
-  constructor(private authService: AuthService,
+  constructor(public authService: AuthService,
     private router: Router, private flashMessage: FlashMessagesService,
     private toastr: ToastrService) {
      }

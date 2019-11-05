@@ -57,7 +57,7 @@ const appRoutes: Routes =  [
     HttpModule,
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule.forRoot(),
-    NgbModule.forRoot(),
+    NgbModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     CollapseModule,
