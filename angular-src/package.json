@@ -11,8 +11,6 @@
   },
   "private": false,
   "dependencies": {
-    
-
     "@angular-devkit/build-angular": "^0.13.8",
     "@angular/animations": "^6.0.0",
     "@angular/cli": "^7.3.8",
@@ -42,10 +40,8 @@
     "rxjs-compat": "^6.5.3",
     "toastr": "^2.1.4",
     "zone.js": "^0.8.26"
-
   },
   "devDependencies": {
-    
     "@angular-devkit/build-angular": "^0.13.8",
     "@angular/cli": "^7.3.8",
     "@angular/compiler-cli": "^7.2.13",
@@ -67,6 +63,5 @@
     "typescript": "~3.1.1",
     "chart.js": "^2.7.1",
     "karma-remap-istanbul": "^0.6.0"
-
   }
 }
