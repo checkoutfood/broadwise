@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app",
-    "build": "cd angular-src && npm install && ng build --prod"
+    "build": "cd angular-src && npm install && npm build --prod"
+  },
+  "engines": {
+    "node": "^11.10.1",
+    "npm": "^6.7.0"
   },
   "dependencies": {
     "express": "*",
