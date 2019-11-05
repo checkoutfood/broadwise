@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
@@ -62,8 +64,10 @@ const appRoutes: Routes =  [
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     CollapseModule,
+    HttpClientModule
   ],
   providers: [ValidateService,AuthService,AuthGuard],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
