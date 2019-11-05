@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from "@angular/http";
-import "rxjs/add/operator/map";
+// import "rxjs/add/operator/map";
+// import "rxjs/Rx";
+import { map } from 'rxjs/operators';
 import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
@@ -18,13 +20,13 @@ export class AuthService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/users/register', user, { headers: headers })
-      .map(res => res.json());
+      .pipe(map(res => res.json()));
   };
   authenticateUser(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/users/authenticate', user, { headers: headers })
-      .map(res => res.json());
+    .pipe(map(res => res.json()));
   }
   getProfile() {
     let headers = new Headers();
@@ -33,7 +35,7 @@ export class AuthService {
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
     return this.http.get('http://localhost:3000/users/profile', { headers: headers })
-      .map(res => res.json());
+    .pipe(map(res => res.json()));
   }
 
   getProducts() {
@@ -41,7 +43,7 @@ export class AuthService {
 
     headers.append('Content-Type', 'application/json');
     return this.http.get('users/product', { headers: headers })
-      .map(res => res.json());
+    .pipe(map(res => res.json()));
   }
 
   addProduct(product) {
@@ -51,7 +53,7 @@ export class AuthService {
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/users/addproduct', product, { headers: headers })
-      .map(res => res.json());
+    .pipe(map(res => res.json()));
   }
 
   editProduct(product) {
@@ -61,7 +63,7 @@ export class AuthService {
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
     return this.http.put('http://localhost:3000/users/editproduct', product, { headers: headers })
-      .map(res => res.json());
+    .pipe(map(res => res.json()));
   }
 
 
@@ -72,7 +74,7 @@ export class AuthService {
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
     return this.http.delete('http://localhost:3000/users/deleteproduct/' + productID, { headers: headers })
-      .map(res => res.json());
+    .pipe(map(res => res.json()));
   }
 
 
