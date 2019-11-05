@@ -5,6 +5,9 @@ import { Http, Headers } from "@angular/http";
 import { map } from 'rxjs/operators';
 import { tokenNotExpired } from 'angular2-jwt';
 
+
+import { environment } from '../../environments/environment';
+
 @Injectable()
 export class AuthService {
   authToken: any;
@@ -19,22 +22,25 @@ export class AuthService {
   registerUser(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/register', user, { headers: headers })
+    return this.http.post(environment.apiBaseUrl + '/users/register', user, { headers: headers })
       .pipe(map(res => res.json()));
   };
   authenticateUser(user) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/authenticate', user, { headers: headers })
+    return this.http.post(environment.apiBaseUrl + '/users/authenticate', user, { headers: headers })
     .pipe(map(res => res.json()));
   }
+
+  
+
   getProfile() {
     let headers = new Headers();
     this.loadToken();
 
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/users/profile', { headers: headers })
+    return this.http.get(environment.apiBaseUrl + '/users/profile', { headers: headers })
     .pipe(map(res => res.json()));
   }
 
@@ -52,7 +58,7 @@ export class AuthService {
 
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/addproduct', product, { headers: headers })
+    return this.http.post(environment.apiBaseUrl + '/users/addproduct', product, { headers: headers })
     .pipe(map(res => res.json()));
   }
 
@@ -62,7 +68,7 @@ export class AuthService {
 
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.put('http://localhost:3000/users/editproduct', product, { headers: headers })
+    return this.http.put(environment.apiBaseUrl + '/users/editproduct', product, { headers: headers })
     .pipe(map(res => res.json()));
   }
 
@@ -73,7 +79,7 @@ export class AuthService {
 
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this.http.delete('http://localhost:3000/users/deleteproduct/' + productID, { headers: headers })
+    return this.http.delete(environment.apiBaseUrl + '/users/deleteproduct/' + productID, { headers: headers })
     .pipe(map(res => res.json()));
   }
 
