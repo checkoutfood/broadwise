@@ -4,7 +4,6 @@
   "description": "Project BroadWise backend",
   "main": "app.js",
   "scripts": {
-   
     "start": "node app.js",
     "build": "cd client && npm install && ng build --prod"
   },

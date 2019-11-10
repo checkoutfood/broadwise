@@ -13,6 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CourseComponent } from './components/course/course.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr'; 
@@ -26,12 +27,15 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CollapseModule } from 'ngx-bootstrap';
 
+//safe piping for videos to dynamically load in iframe
+import { SafePipe } from './components/course/safe.pipe';
 
 const appRoutes: Routes =  [
   {path:'', component: HomeComponent},
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
   {path:'products', component: DashboardComponent},
+  { path: 'course', component: CourseComponent, canActivate: [AuthGuard]},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: 'addproduct', component: AddProductComponent, canActivate: [AuthGuard] },
   { path: 'editproduct', component: EditProductComponent, canActivate: [AuthGuard]},
@@ -51,8 +55,10 @@ const appRoutes: Routes =  [
     AddProductComponent,
     EditProductComponent,
     ShoppingCartComponent,
-    CheckoutComponent
-      ],
+    CheckoutComponent,
+    CourseComponent,
+    SafePipe
+  ],
   imports: [
     BrowserModule,
     FormsModule,

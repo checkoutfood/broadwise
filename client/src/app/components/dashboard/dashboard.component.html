@@ -9,10 +9,92 @@
     </p>
   </div>
 </section-->
-<br>
-<div class="album py-5 bg-light">
+<!--br>
+<div class="album py-5 bg-light"-->
   <div class="container">
-    <div class="ring">
+
+
+      <!--div class="ring">
+            
+            <div class="videos__item-name">How to sell yourself as a DBT PM or BA</div>
+            <div class="videos__item-description text-overflow" style="overflow-wrap: break-word;">Learn how to create your unique selling point and market yourself as as DBT professional</div>
+            <div class="videos__item-details">
+                <div class="videos__item-details-left">
+
+
+
+                    <iframe src="https://player.vimeo.com/video/163231140" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    
+                    <iframe src="https://player.vimeo.com/video/163231140" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        
+                    <iframe src="https://player.vimeo.com/video/163231140" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        
+                    
+                    
+                    
+                    
+                    <div class="videos__item-details__item videos__item-details__item--author">Author: Keji Giwa</div>
+                </div>
+                <div class="videos__item-details-right">
+                    <div class="videos__item-details__item videos__item-details__item--views">105</div>
+                    <div class="videos__item-details__item videos__item-details__item--likes">1</div>
+                    <div class="videos__item-details__item videos__item-details__item--comments">0</div>
+                </div>
+            </div>
+       
+      </div>
+
+    <div>
+      <div *ngFor="let product of products">
+          <p>{{product.description}}</p>
+      </div>
+    </div-->
+
+      <div class="ring">
+          <h2>Agile Practice</h2>
+          <hr>
+          <div *ngIf="products">
+            <div class="row ">
+              <div *ngFor="let product of products" class="col-md-4">
+                <div class="card mb-4 box-shadow ">
+                  <img class="card-img-top" src="{{product.img}}" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">{{product.name}}</h5>
+                    <p class="card-text">{{product.description}}</p>
+                    
+                    <button type="button" *ngIf="authService.loggedIn()" class="btn btn-dark btn-lg btn-block" (click)="onAddProductToCart(product)">Enrol</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        
+      <div class="ring">
+        <h2>Agile Practice</h2>
+        <hr>
+        <div *ngIf="products">
+          <div class="row ">
+            <div *ngFor="let product of products" class="col-md-4">
+              <div class="card mb-4 box-shadow ">
+                <img class="card-img-top" src="{{product.img}}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{product.name}}</h5>
+                  <p class="card-text">{{product.description}}</p>
+                  
+                  <button type="button" *ngIf="authService.loggedIn()" class="btn btn-dark btn-lg btn-block" (click)="onAddProductToCart(product)">Enrol</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    <!--div class="ring">
       <h2>Course 1</h2>
       <hr>
       <div *ngIf="products">
@@ -39,6 +121,7 @@
         </div>
       </div>
     </div>
+
     <div class="necklace">
       <h2>Course 2</h2>
       <hr>
@@ -145,6 +228,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </div-->
   </div>
-</div>
+<!--/div-->

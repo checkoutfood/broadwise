@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { ToastrService } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {Renderer2 } from '@angular/core';
+
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-course',
+  templateUrl: './course.component.html',
+  styleUrls: ['./course.component.css']
 })
-export class DashboardComponent implements OnInit {
+
+export class CourseComponent implements OnInit {
   products: any;
   rings: any = [];
   ears: any = [];
@@ -18,6 +21,7 @@ export class DashboardComponent implements OnInit {
   pens: any = [];
   bracs: any = [];
   i: any;
+  videos: any;
 
   name: String;
   product_id:String;
@@ -25,10 +29,17 @@ export class DashboardComponent implements OnInit {
   price: 350;
   added: boolean;
 
+
+  
+  @ViewChild('myDiv') myDiv: ElementRef;
+
+
+
   
   constructor(public authService: AuthService,
     private router: Router, private flashMessage: FlashMessagesService,
-    private toastr: ToastrService) {
+    private toastr: ToastrService,
+    private renderer: Renderer2) {
      }
 
 
@@ -62,41 +73,34 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     
-      // this.products = 
-
-      // {
-      //   "products":[
-        
-      //     {
-      //       "name" : "red",
-      //       "description": "desc"
-      //     },
-      //     {
-      //       "name" : "green",
-      //       "description": "desc"
-      //     }
-      //   ]
-        
-
-      // };
 
 
-      this.products = [
+      this.videos = [
              {
             "name" : "How to sell yourself as a DBT PM or BA",
             "description": "Learn how to create your unique selling point and market yourself as as DBT professional",
-            "img": "../../assets/images/agileWork.jpg"
+            "author": "Ryan Mel",
+            "content" : "<iframe src=\"https://player.vimeo.com/video/163231140\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+            
+                    
           },
           {
             "name" : "How to sell yourself as a DBT PM or BA",
             "description": "Learn how to create your unique selling point and market yourself as as DBT professional",
-            "img": "../../assets/images/agileWork.jpg"
+            "author": "Ryan Mel",
+            "content" : "<iframe src=\"https://player.vimeo.com/video/163231140\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+            
           }
       
       ];
      
     
   }
+
+// @ViewChild('videoPlayer') videoplayer: ElementRef;
+// toggleVideo(event: any) {
+//     this.videoplayer.nativeElement.play();
+// }
 
   onEditProduct(product: any) {
     this.authService.storeProductData(product);
