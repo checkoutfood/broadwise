@@ -6,7 +6,6 @@ import { ToastrService } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {Renderer2 } from '@angular/core';
 
-
 @Component({
   selector: 'app-course',
   templateUrl: './course.component.html',
@@ -15,13 +14,9 @@ import {Renderer2 } from '@angular/core';
 
 export class CourseComponent implements OnInit {
   products: any;
-  rings: any = [];
-  ears: any = [];
-  necks: any = [];
-  pens: any = [];
-  bracs: any = [];
-  i: any;
   videos: any;
+  videosTest: any;
+course: any;
 
   name: String;
   product_id:String;
@@ -29,78 +24,45 @@ export class CourseComponent implements OnInit {
   price: 350;
   added: boolean;
 
+//  @ViewChild('myDiv') myDiv: ElementRef;
 
-  
-  @ViewChild('myDiv') myDiv: ElementRef;
-
-
-
-  
-  constructor(public authService: AuthService,
+constructor(public authService: AuthService,
     private router: Router, private flashMessage: FlashMessagesService,
     private toastr: ToastrService,
     private renderer: Renderer2) {
      }
 
-
-  // ngOnInit() {
-  //   this.authService.getProducts().subscribe(data => {
-  //     this.products = data;
-  //     for (let product of this.products) {
-  //       if (product.Catag == "ring") {
-  //         // 1, "string", false
-  //         this.rings.push(product);
-  //       }
-  //       else if (product.Catag == "neck") {
-  //         this.necks.push(product);
-  //       }
-  //       else if (product.Catag == "brac") {
-  //         this.bracs.push(product);
-  //       }
-  //       else if (product.Catag == "pen") {
-  //         this.pens.push(product);
-  //       }
-  //       else if (product.Catag == "ear") {
-  //         this.ears.push(product);
-  //       }
-  //     }
-  //   }, err => {
-  //     console.log(err);
-  //     return false;
-  //   });
-  // }
-
-
   ngOnInit() {
-    
+
+    this.course = localStorage.getItem("navigateToCourseTarget");
+
+this.authService.getIndividualCourseAllDetails(this.course).subscribe((data: any[]) =>{
+  
+this.videos = data;
+
+});
 
 
-      this.videos = [
-             {
-            "name" : "How to sell yourself as a DBT PM or BA",
-            "description": "Learn how to create your unique selling point and market yourself as as DBT professional",
-            "author": "Ryan Mel",
-            "content" : "<iframe src=\"https://player.vimeo.com/video/163231140\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
-            
+
+    // this.videosTest = [
+    //          {
+    //         "name" : "How to sell yourself as a DBT PM or BA",
+    //         "description": "Learn how to create your unique selling point and market yourself as as DBT professional",
+    //         "author": "Ryan Mel",
+    //         "content" : "<iframe src=\"https://player.vimeo.com/video/163231140\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
                     
-          },
-          {
-            "name" : "How to sell yourself as a DBT PM or BA",
-            "description": "Learn how to create your unique selling point and market yourself as as DBT professional",
-            "author": "Ryan Mel",
-            "content" : "<iframe src=\"https://player.vimeo.com/video/163231140\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+    //       },
+    //       {
+    //         "name" : "How to sell yourself as a DBT PM or BA",
+    //         "description": "Learn how to create your unique selling point and market yourself as as DBT professional",
+    //         "author": "Ryan Mel",
+    //         "content" : "<iframe src=\"https://player.vimeo.com/video/163231140\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
             
-          }
-      
-      ];
-     
-    
-  }
+    //       }      
+    //   ];
 
-// @ViewChild('videoPlayer') videoplayer: ElementRef;
-// toggleVideo(event: any) {
-//     this.videoplayer.nativeElement.play();
-// }
+     
+  }
 
   onEditProduct(product: any) {
     this.authService.storeProductData(product);
@@ -116,22 +78,6 @@ export class CourseComponent implements OnInit {
         this.router.navigate(['/products']);
       }
     });
-  }
-
-  onAddProductToCart(product){
-    const item = {
-      name: product.name,
-      product_id: product._id,
-      img: product.img,
-      price: 350,
-      added: true,
-      quantity:1
-    }
-    this.authService.storeItemToOrder(item);
-    this.toastr.success('Item is Added to your Cartng!', 'Cart!',{
-      timeOut: 1000,
-    });
-   
   }
 
 }

@@ -17,6 +17,7 @@ export class AuthService {
   role: any;
   iteml: any;
   totall: any;
+  courseName: any;
 
   constructor(private http: Http) { }
   registerUser(user) {
@@ -32,7 +33,19 @@ export class AuthService {
     .pipe(map(res => res.json()));
   }
 
-  
+  getIndividualCourseAllDetails(courseName) {
+    let headers = new Headers();
+
+    // console.log(courseName);
+    
+    // this.loadToken();
+
+    // headers.append('Authorization', this.authToken);
+    
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(environment.apiBaseUrl + '/users/course/' + courseName, courseName)
+    .pipe(map(res => res.json()));
+  }
 
   getProfile() {
     let headers = new Headers();

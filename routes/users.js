@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
 const Product = require('../models/product');
+const Individualcourse = require('../models/individualcourse');
 
 // Register
 router.post('/register', (req, res, next) => {
@@ -84,6 +85,51 @@ router.get('/profile', passport.authenticate('jwt', {
     user: req.user
   });
 });
+
+
+
+router.get('/course/:courseName', function(req, res, next){
+    
+  Individualcourse.find({courseName:req.params.courseName}, function(err, data){
+    if(err){
+        console.log(err);
+        return
+    }
+
+    if(data.length == 0) {
+        console.log("No record found")
+        return
+    }
+
+    res.send(data);
+})
+});
+
+
+
+
+// {
+
+//   console.log("I found omething");
+//   console.log(req.params);
+
+//   const courseName = req.body.courseName;
+
+//   Individualcourse.find(courseName, (err, courseName) => {
+//     if (err) throw err;
+//     if (!courseName) {
+//       return res.json({
+//         success: false,
+//         msg: 'courseName not found'
+//       });
+//     }
+
+
+//   });
+
+//   console.log(res.json);
+
+// });
 
 
 //Product rereive

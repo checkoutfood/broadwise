@@ -83,7 +83,7 @@ export class DashboardComponent implements OnInit {
 
       this.products = [
              {
-            "name" : "How to sell yourself as a DBT PM or BA",
+            "name" : "AgilePM",
             "description": "Learn how to create your unique selling point and market yourself as as DBT professional",
             "img": "../../assets/images/agileWork.jpg"
           },
@@ -129,5 +129,20 @@ export class DashboardComponent implements OnInit {
     });
    
   }
+
+  
+  onNavigateToCourse(product){
+    
+
+      localStorage.setItem("navigateToCourseTarget", product.name)
+
+      this.router.navigate(['course']);
+
+    // this.toastr.success('Item is Added to your Cartng!', 'Cart!',{
+    //   timeOut: 1000,
+    // });
+   
+  }
+
 
 }

@@ -1,16 +1,14 @@
 <div class="container">
   <div class="ring">
     <div *ngIf="authService.loggedIn()">
-      <h2>Course X</h2>
+      <h2><p>{{course}}</p></h2>
       <hr>
       <div class="row ">
         <div *ngFor="let video of videos" class="col-md-4">
-          <p>{{video.name}}</p>
-          <p>{{video.description}}</p>
-          <p>{{video.author}}</p>
-          
+          <p>{{video.moduleName}}</p>
+          <p>{{video.moduleDesc}}</p>
+          <p>{{video.moduleAuthor}}</p>
           <div [innerHTML]="video.content | safe: 'html'"></div>
-
           
         </div>
       </div>
