@@ -93,7 +93,7 @@ export class ShoppingCartComponent implements OnInit {
   // }
   checkout(){
 
-
+    this.authService.storeCurrentselection(this.currentselection);
     this.authService.storeTotal(this.total);
     this.router.navigate(['/checkout']);
 

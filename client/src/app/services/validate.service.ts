@@ -41,7 +41,7 @@ export class ValidateService {
 
   validateCard(Card){
     if ( Card.ccname == undefined || Card.ccnumber  == undefined
-      || Card.ccexpiration == undefined || Card.cccvv  == undefined) {
+      || Card.ccexpiration_month == undefined || Card.ccexpiration_year == undefined || Card.cccvv  == undefined) {
       return false;
     } else {
       return true;

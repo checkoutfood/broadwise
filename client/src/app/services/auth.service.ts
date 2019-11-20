@@ -19,6 +19,7 @@ export class AuthService {
   iteml: any;
   totall: any;
   courseName: any;
+  currentselection: any;
 
   constructor(private http: Http) { }
   registerUser(user) {
@@ -35,10 +36,10 @@ export class AuthService {
   }
 
 
-  makePayment(checkout) {
+  makePayment(paymentDetails) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post(environment.apiBaseUrl + '/payments/checkout', checkout, { headers: headers })
+    return this.http.post(environment.apiBaseUrl + '/payments/checkout', paymentDetails, { headers: headers })
       .pipe(map(res => res.json()));
   };
 
@@ -167,6 +168,14 @@ export class AuthService {
   }
   storeTotal(total: any) {
     this.totall = total;
+  }
+
+  storeCurrentselection(currentselection: any) {
+    this.currentselection = currentselection;
+  }
+
+  getCurrentselection(){
+    return this.currentselection;
   }
 
   getTotal() {
