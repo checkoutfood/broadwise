@@ -23,6 +23,7 @@ const app = express();
 
 const users = require('./routes/users');
 
+const payments = require('./routes/payments');
 // Port Number
 const port = process.env.PORT || 3000;
 //const port=process.env.PORT || 8080;
@@ -40,7 +41,7 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 app.use('/users', users);
-
+app.use('/payments', payments);
 
 // // Set Static Folder
 // app.use(express.static(path.join(__dirname, 'public')));

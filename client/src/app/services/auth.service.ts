@@ -33,6 +33,15 @@ export class AuthService {
     .pipe(map(res => res.json()));
   }
 
+
+  makePayment(checkout) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(environment.apiBaseUrl + '/payments/checkout', checkout, { headers: headers })
+      .pipe(map(res => res.json()));
+  };
+
+
   getIndividualCourseAllDetails(courseName) {
     let headers = new Headers();
 

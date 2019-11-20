@@ -61,10 +61,26 @@ export class CheckoutComponent implements OnInit {
       return false;
     }
 
+//call the server side api and make a stripe payment
 
-    this.flashMessage.show('Your order is Placed', { cssClass: 'alert-success', timeout: 8000 });
+
+this.authService.makePayment(checkout).subscribe(data=>{
+  if(data.success){
+    this.flashMessage.show('Your order is Placed and Successfully Paid', { cssClass: 'alert-success', timeout: 3000 });
     this.authService.orderClear();
     this.router.navigate(['/']);
+  }else{
+    this.flashMessage.show('Something went wrong', { cssClass: 'alert-danger', timeout: 3000 });
+   
+  }
+});
+
+
+
+
+    // this.flashMessage.show('Your order is Placed', { cssClass: 'alert-success', timeout: 8000 });
+    // this.authService.orderClear();
+    // this.router.navigate(['/']);
   }
 
 }

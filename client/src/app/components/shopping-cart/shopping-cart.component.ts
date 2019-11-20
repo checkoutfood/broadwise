@@ -52,15 +52,20 @@ export class ShoppingCartComponent implements OnInit {
     return true;
   }
   checkout(){
-    if (this.items.length == null || this.items.length == 0){
+
+    this.authService.storeTotal(this.total);
+    this.router.navigate(['/checkout']);
+
+
+    // if (this.items.length == null || this.items.length == 0){
      
-      this.flashMessage.show('Please add some items to Cart', { cssClass: 'alert-danger', timeout: 3000 });
-    }
-    else{
+    //   this.flashMessage.show('Please add some items to Cart', { cssClass: 'alert-danger', timeout: 3000 });
+    // }
+    // else{
       
-      this.authService.storeTotal(this.total);
-       this.router.navigate(['/checkout']);
-    }
+    //   this.authService.storeTotal(this.total);
+    //    this.router.navigate(['/checkout']);
+    // }
 
   }
 
