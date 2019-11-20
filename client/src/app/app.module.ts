@@ -26,6 +26,7 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CollapseModule } from 'ngx-bootstrap';
+import { PaymentreceiptComponent } from './components/paymentreceipt/paymentreceipt.component';
 
 //safe piping for videos to dynamically load in iframe
 import { SafePipe } from './components/course/safe.pipe';
@@ -40,7 +41,8 @@ const appRoutes: Routes =  [
   { path: 'addproduct', component: AddProductComponent, canActivate: [AuthGuard] },
   { path: 'editproduct', component: EditProductComponent, canActivate: [AuthGuard]},
   { path: 'cart', component: ShoppingCartComponent, canActivate: [AuthGuard] },
-  { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] }
+  { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard] },
+  { path: 'paymentreceipt', component: PaymentreceiptComponent, canActivate: [AuthGuard] }
 ]
 
 @NgModule({
@@ -56,6 +58,7 @@ const appRoutes: Routes =  [
     EditProductComponent,
     ShoppingCartComponent,
     CheckoutComponent,
+    PaymentreceiptComponent,
     CourseComponent,
     SafePipe
   ],

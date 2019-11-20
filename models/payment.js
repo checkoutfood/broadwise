@@ -115,6 +115,12 @@ module.exports.addPayment = function (newPayment, callback) {
        
 }
 
+
+// module.exports.getPaymentByPaymentChargeId = function(paymentChargeId, callback){
+//     const query = {paymentChargeId: paymentChargeId}
+//     Payment.findOne(query, callback);
+//   }
+
 // module.exports.editPayment = function (oldPaymentID,newPayment, callback) {
 //     const query = { _id: oldPaymentID }
 //     Payment.findByIdAndUpdate(query,newPayment, callback);

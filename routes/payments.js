@@ -198,7 +198,8 @@ console.log("payment completed;receipt page can be redirected if needed");
 
       return res.json({
         success: true,
-        msg: 'Payment Done'
+        msg: 'Payment Done',
+        paymentReferenceId: charge.id
       });
     });
   });
@@ -246,6 +247,27 @@ console.log("payment completed;receipt page can be redirected if needed");
       // });
     //});
   });
+
+
+  // router.get('/getPayment', (req, res, next) => {
+
+  //   console.log("request received");
+  //   console.log(req.body.paymentReferenceId);
+  //   const paymentChargeId = req.body.paymentReferenceId;
+   
+  //   Payment.getPaymentByPaymentChargeId(paymentChargeId, (err, payment) => {
+  //     if (err) throw err;
+  //     if (!payment) {
+  //       return res.json({
+  //         success: false,
+  //         msg: 'payment not found'
+  //       });
+  //     }
+
+  //     console.log("db gave me");
+  //     console.log(payment);
+  //   })
+  // });
   
   module.exports = router;
   

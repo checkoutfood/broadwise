@@ -20,6 +20,7 @@ export class AuthService {
   totall: any;
   courseName: any;
   currentselection: any;
+  paymentReferenceId: any;
 
   constructor(private http: Http) { }
   registerUser(user) {
@@ -67,6 +68,16 @@ export class AuthService {
     return this.http.get(environment.apiBaseUrl + '/users/profile', { headers: headers })
     .pipe(map(res => res.json()));
   }
+
+  // getPayment(paymentReferenceId) {
+  //   let headers = new Headers();
+  //  // this.loadToken();
+
+  //  headers.append('Content-Type', 'application/json');
+    
+  //   return this.http.get(environment.apiBaseUrl + '/payment/getpayment' + paymentReferenceId, paymentReferenceId)
+  //   .pipe(map(res => res.json()));
+  // }
 
   getProducts() {
     let headers = new Headers();
@@ -177,6 +188,15 @@ export class AuthService {
   getCurrentselection(){
     return this.currentselection;
   }
+
+  storePaymentReferenceId(paymentReferenceId: any) {
+    this.paymentReferenceId = paymentReferenceId;
+  }
+
+  getPaymentReferenceId(){
+    return this.paymentReferenceId;
+  }
+
 
   getTotal() {
     return this.totall;

@@ -104,13 +104,15 @@ this.router.navigate(['/cart']);
 this.authService.makePayment(paymentDetails).subscribe(data=>{
   console.log(data);
   if(data.success){
+    this.authService.storePaymentReferenceId(data.paymentReferenceId);
     this.flashMessage.show('Your order is Placed and Successfully Paid', { cssClass: 'alert-success', timeout: 3000 });
    // this.authService.orderClear();
-    this.router.navigate(['/']);
+    this.router.navigate(['/paymentreceipt']);
     //navigate to a new page called payment receipt page and show transaction references etc
   }else{
     this.flashMessage.show('Something went wrong', { cssClass: 'alert-danger', timeout: 3000 });
     //this.flashMessage.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
+   //navigate to a failure page, not payment recepit
   }
 });
 
