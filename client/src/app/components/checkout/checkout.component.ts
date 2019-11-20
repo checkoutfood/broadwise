@@ -27,6 +27,9 @@ export class CheckoutComponent implements OnInit {
     private router: Router, private validateService: ValidateService) { }
 
   ngOnInit() {
+    if(!this.authService.checkTotalNotZero()){
+this.router.navigate(['/cart']);
+    }
   }
 
   orderPlaced() {

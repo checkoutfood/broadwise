@@ -7,6 +7,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 
 
 import { environment } from '../../environments/environment';
+//import { truncate } from 'fs';
 
 @Injectable()
 export class AuthService {
@@ -174,6 +175,15 @@ export class AuthService {
   itemslenth() {
     var tempItem = JSON.parse(localStorage.getItem("items"));
     if (tempItem.length > 0) {
+      return true;
+    }
+    else
+      return false;
+  }
+
+  checkTotalNotZero(){
+   
+    if(this.totall>0){
       return true;
     }
     else
