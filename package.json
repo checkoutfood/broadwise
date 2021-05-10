@@ -21,7 +21,7 @@
     "passport": "*",
     "passport-jwt": "*",
     "@angular/cli": "^7.3.8",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.21",
     "passport-local": "^1.0.0",
     "stripe": "^4.13.0"
   },
