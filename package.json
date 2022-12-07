@@ -23,7 +23,7 @@
     "@angular/cli": "^7.3.8",
     "lodash": "^4.17.10",
     "passport-local": "^1.0.0",
-    "stripe": "^4.13.0"
+    "stripe": "^11.2.0"
   },
   "author": "Chockalingam Subramanian",
   "license": "ISC"
